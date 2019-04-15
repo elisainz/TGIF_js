@@ -2,57 +2,132 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--Bootstrap 3 to get a nice looking table, es un framework-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Bootstrap 3 to get a nice looking table, es un framework-->
 </head>
 
 <body>
-    <nav>
-        <div>
-            <div>
-                <a href="#">TGIF</a>
-            </div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li>
-                    <a href="#">Congress 113</a>
-                    <ul>
-                        <li><a href="#">Senate</a></li>
-                        <li><a href="#">House</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <header>
-        <div>
-        </div>
-    </header>
-    <!--Table container-->
-    <div class="container">
-        <h2>Senators</h2>
-        <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
-        
-
-        <table class="senators-table">
-            <thead id="senators-table-headers">
-            </thead>
-            <tbody id="senators-table-rows">
-            </tbody>
-        </table>
+  <nav>
+    <div>
+      <a href="#">TGIF</a>
     </div>
 
-    <!-- <img src="../picture.jpg">	picture.jpg is located in the folder one level up from the current folder -->
+    <div class="navbar">
+      <a href="#">Home</a>
 
-    
+      <div class="dropdown">
+        <button class="dropbtn">Congress 113
+          <i class="fa fa-caret-down"></i>
+        </button>
 
-    <script src="../table-demo.js">
+        <div class="dropdown-content">
+          <a href="#">Senate</a>
+          <a href="#">House</a>
+        </div>
+      </div>
 
-    </script>
+    </div>
 
-    <!-- console.log(data.results[0]/*al ser un array poner []/.members); */
+
+  </nav>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: red;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+  </style>
+
+  <header>
+    <div>
+    </div>
+  </header>
+  <!--Table container-->
+  <div class="container">
+    <h2>Senators</h2>
+    <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+
+
+    <table id="senate-data" class="table table-bordered">
+
+    </table>
+  </div>
+
+  <!-- <img src="../picture.jpg">	picture.jpg is located in the folder one level up from the current folder -->
+
+
+  <script src="../pro-congress-113-senate.js">
+
+  </script>
+
+  <script src="../table-demo.js">
+
+  </script>
+
+  <!-- console.log(data.results[0]/*al ser un array poner []/.members); */
 
 
 
