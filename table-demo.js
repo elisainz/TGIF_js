@@ -3,7 +3,7 @@ createSenateTabla();
 
 function createSenateTabla() {
   var tablaFormateada = renderSenTable(data.results[0].members);
-  var tablaFinal = document.getElementById("senate-data");
+  var tablaFinal = document.getElementById("senate/house-data");
   tablaFinal.innerHTML = tablaFormateada;
 }
 
