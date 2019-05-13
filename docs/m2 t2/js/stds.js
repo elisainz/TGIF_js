@@ -35,7 +35,7 @@ DataDem.forEach(e => {
   estadisticas.VWPD+= e.votes_with_party_pct;
 });
 estadisticas.VWPD /=estadisticas.numberD;
-estadisticas.VWPD=estadisticas.VWPD.toFixed(2);
+estadisticas.VWPD=estadisticas.VWPD.toFixed(2); //numero de decimales despues de la coma
 console.log(estadisticas.VWPD);
 
 DataRep.forEach(e => {
@@ -54,7 +54,7 @@ function sumarVotos(datos){
   datos.forEach(e => {
   suma+= e.votes_with_party_pct;
   });
-  sumaa /=estadisticas.numberI;
+  suma /=estadisticas.numberI;
   estadisticas.VWPI=estadisticas.VWPI.toFixed(2);
   console.log(estadisticas.VWPI);
  return suma;
