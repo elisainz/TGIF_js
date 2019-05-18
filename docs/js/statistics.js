@@ -11,6 +11,7 @@ var estadisticas = //create fields for all the statistics the client has request
 		vwpDem: 0,
 		vwpRep: 0,
 		vwpInd: 0,
+        vwpTOTAL:0,
 		least_engaged: [],
 		most_engaged: [],
 		least_loyal: [],
@@ -50,6 +51,7 @@ for (i = 0; i < members.length; i++) {
 		estadisticas.vwpInd += +(members[i].votes_with_party_pct / estadisticas.numberI).toFixed(2)
 	}
 }
+estadisticas.vwpTOTAL += +(estadisticas.vwpDem + estadisticas.vwpRep + estadisticas.vwpInd).toFixed(2)/3
 
 
 function TablaAtAGlance() {
@@ -58,13 +60,13 @@ function TablaAtAGlance() {
 	tabla += "<tr> <td> Democrats </td>  <td> " + estadisticas.numberD + " </td> <td> " + (estadisticas.vwpDem).toFixed(2) + " % </td></tr>"
 	tabla += "<tr> <td> Republicans </td>  <td> " + estadisticas.numberR + " </td> <td> " + (estadisticas.vwpRep).toFixed(2) + " % </td></tr>"
 	tabla += "<tr> <td> Independents </td>  <td> " + estadisticas.numberI + " </td> <td> " + (estadisticas.vwpInd).toFixed(2) + " % </td></tr>"
-	tabla += "<tr> <td> Total </td>  <td> " + estadisticas.numberTOTAL + " </td> <td> " + (estadisticas.vwpInd).toFixed(2) + " % </td></tr>" //CAMBIARRRR PORCENTAJE TOTAL
+	tabla += "<tr> <td> Total </td>  <td> " + estadisticas.numberTOTAL + " </td> <td> " + (estadisticas.vwpTOTAL).toFixed(2) + " % </td></tr>" 
 	tabla += "</tbody>"
 	document.getElementById("senate-house-at-a-glance").innerHTML = tabla;
 }
 
 
-//trunc devuelve la parte entera removiendo any fractorial digits
+//Math.trunc devuelve la parte entera removiendo any fractorial digits
 //ordenar array de members descendentemente por sus missed votes. diez porciento
 members.sort(function (a, b) {
 	return b.missed_votes_pct - a.missed_votes_pct
@@ -72,6 +74,24 @@ members.sort(function (a, b) {
 for (i = 0; i < Math.trunc(members.length / 10); i++) { //para cada miembro de ese 10% lo guardamos en estadisticas
 	estadisticas.least_engaged[i] = members[i]
 }
+
+
+
+function TablaLeastEngaged() {
+	var tabla = "<thead> <tr> <th> Name </th>  <th> Number of Missed Votes </th> <th> % Votes Missed </th> </tr> </thead> "
+	tabla += "<tbody>"
+	estadisticas.least_engaged.forEach(function (element) {
+    tabla += "<tr>"
+	if (element.middle_name === null) {
+		tabla += "<tr> <td>" + "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.last_name + " </td> <td>" + element.missed_votes + " </td> <td>" + element.missed_votes_pct + " </td> </tr>"
+	} else {
+		tabla +=  "<tr> <td>" + "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.middle_name + "&nbsp;" + element.last_name + " </td> <td>" + element.missed_votes + " </td> <td>" + element.missed_votes_pct + "</td> </tr>"
+	}});
+	tabla += "</tbody>"
+	document.getElementById("senate-house-least-engaged").innerHTML = tabla;
+}
+
+
 
 //ordenar array de members ascendentemente por sus missed votes. diez porciento
 members.sort(function (a, b) {
@@ -84,19 +104,7 @@ for (i = 0; i < Math.trunc(members.length / 10); i++) { //para cada miembro de e
 
 
 
-function TablaLeastEngaged() {
-	var tabla = "<thead> <tr> <th> Name </th>  <th> Number of Missed Votes </th> <th> % Votes Missed </th> </tr> </thead> "
-	tabla += "<tbody>"
-	estadisticas.least_engaged.forEach(function (element) {
-    tabla += "<tr>"
-	if (element.middle_name === null) {
-		tabla += "<tr> <td>" + "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.last_name + " </td> <td>" + element.missed_votes_pct + " </td> <td>" + estadisticas.least_engaged + " </td> </tr>"
-	} else {
-		tabla += "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.middle_name + "&nbsp;" + element.last_name + " </td> <td>" + element.missed_votes_pct + " </td> <td>" + estadisticas.least_engaged + " </td> </tr>"
-	}});
-	tabla += "</tbody>"
-	document.getElementById("senate-house-least-engaged").innerHTML = tabla;
-}
+
 
 
 
