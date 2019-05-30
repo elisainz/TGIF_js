@@ -115,7 +115,7 @@ function TablaMostEngaged() {
         if (element.middle_name === null) {
             tabla += "<tr> <td>" + "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.last_name + " </td> <td>" + element.missed_votes + " </td> <td>" + element.missed_votes_pct + " % </td> </tr>"
         } else {
-            tabla += "<tr> <td>" + "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.middle_name + "&nbsp;" + element.last_name + " </td> <td>" + element.total_votes + " </td> <td>" + element.missed_votes_pct + " % </td> </tr>"
+            tabla += "<tr> <td>" + "<a href='" + element.url + "'>" + element.first_name + "&nbsp;" + element.middle_name + "&nbsp;" + element.last_name + " </td> <td>" + element.missed_votes + " </td> <td>" + element.missed_votes_pct + " % </td> </tr>"
         }
     });
     tabla += "</tbody>"
